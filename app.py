@@ -53,7 +53,7 @@ def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {"speech": "zorsa yaparız imkansızsa zaman alır","displayText": "zorsa yaparız imkansızsa zaman alır deneme","source": "apiai-weather-webhook-sample"}
    else :
-	return {"speech": "zorsa yaparız imkansızsa zaman alır","displayText": "zorsa yaparız imkansızsa zaman alır deneme","source": "apiai-weather-webhook-sample"}
+        return {"speech": "zorsa yaparız imkansızsa zaman alır","displayText": "zorsa yaparız imkansızsa zaman alır deneme","source": "apiai-weather-webhook-sample"}
 		
 
 
