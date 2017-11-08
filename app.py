@@ -57,7 +57,7 @@ def processRequest(req):
 
 	
 def yahooWeatherForecast():
-	baseurl = "http://asknnapi.azurewebsites.net/api/contact/claimsStatus"
+	baseurl = "http://asknnapi.azurewebsites.net/api/contact/claimsStatus?"
     result = req.get("result")
     parameters = result.get("parameters")
     identityNumber = parameters.get("identityNumber")
@@ -65,7 +65,7 @@ def yahooWeatherForecast():
     if identityNumber is None:
         return {}
 		
-    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+    yql_url = baseurl + urlencode({'identityNumber': identityNumber}) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
     
