@@ -68,7 +68,7 @@ def processRequest(req):
 
 
 def claims():
-    return {"speech": speech,"displayText": speech,"source": "apiai-weather-webhook-sample"}		
+    return {"speech": "test","displayText": "test","source": "apiai-weather-webhook-sample"}		
 
 def makeYqlQuery(req):
     result = req.get("result")
