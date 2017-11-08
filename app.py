@@ -51,7 +51,7 @@ def webhook():
 
 def processRequest(req):
 	condition = req.get("result").get("action")
-    if condition == "test":
+    if req.get("result").get("action") == "test":
 		return {"speech": "claim","displayText": "claim","source": "apiai-weather-webhook-sample"}	
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
