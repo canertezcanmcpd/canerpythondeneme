@@ -54,22 +54,18 @@ def processRequest(req):
     if condition == "test":
         return {"speech": "claim","displayText": "claim","source": "apiai-weather-webhook-sample"}
     elif condition == "claimsStatus":
-        claim()		
-    else:
-	baseurl = "https://query.yahooapis.com/v1/public/yql?"
-        yql_query = makeYqlQuery(req)
-        if yql_query is None:
-            return {}
-        yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-        result = urlopen(yql_url).read()
-        data = json.loads(result)
-        res = makeWebhookResult(data)
-        return res
+        return {"speech": "claim metodu çağırıldı.","displayText": "claim","source": "apiai-weather-webhook-sample"}		
+    baseurl = "https://query.yahooapis.com/v1/public/yql?"
+    yql_query = makeYqlQuery(req)
+    if yql_query is None:
+        return {}
+    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+    result = urlopen(yql_url).read()
+    data = json.loads(result)
+    res = makeWebhookResult(data)
+    return res
 
 
-def claim():
-    return {"speech": "claim metodu çağırıldı.","displayText": "claim","source": "apiai-weather-webhook-sample"}
-	
 def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
