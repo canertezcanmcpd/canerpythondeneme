@@ -65,11 +65,11 @@ def yahooWeatherForecast():
     if identityNumber is None:
         return {}
 		
-    yql_url = baseurl + urlencode({'identityNumber': identityNumber}) + "&format=json"
+    yql_url = baseurl + urlencode({'identityNumber': identityNumber})
     result = urlopen(yql_url).read()
     data = json.loads(result)
     
-     return {"speech": data,"displayText": "zorsa yaparız imkansızsa zaman alır deneme","source": "apiai-weather-webhook-sample"}
+     return {"speech": "deneme","displayText": "zorsa yaparız imkansızsa zaman alır deneme","source": "apiai-weather-webhook-sample"}
 	
 
 def makeYqlQuery(req):
