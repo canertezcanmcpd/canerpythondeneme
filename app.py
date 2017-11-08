@@ -53,9 +53,9 @@ def processRequest(req):
     condition = req.get("result").get("action")
     if condition == "test":
         return {"speech": "claim","displayText": "claim","source": "apiai-weather-webhook-sample"}
-	elif condition == "claimsStatus":
+    elif condition == "claimsStatus":
         clm = claims()
-		return clm
+	return clm
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
