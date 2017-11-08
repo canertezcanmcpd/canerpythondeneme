@@ -52,25 +52,16 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {"speech": "zorsa yaparız imkansızsa zaman alır","displayText": "zorsa yaparız imkansızsa zaman alır deneme","source": "apiai-weather-webhook-sample"}
-    else :	
-		yahooWeatherForecast()
-
-	
-def yahooWeatherForecast():
-	baseurl = "http://asknnapi.azurewebsites.net/api/contact/claimsStatus?"
-    result = req.get("result")
-    parameters = result.get("parameters")
-    identityNumber = parameters.get("identityNumber")
-	
-    if identityNumber is None:
+    baseurl = "https://query.yahooapis.com/v1/public/yql?"
+    yql_query = makeYqlQuery(req)
+    if yql_query is None:
         return {}
-		
-    yql_url = baseurl + urlencode({'identityNumber': identityNumber})
+    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
-    
-     return {"speech": "deneme","displayText": "zorsa yaparız imkansızsa zaman alır deneme","source": "apiai-weather-webhook-sample"}
-	
+    res = makeWebhookResult(data)
+    return res
+
 
 def makeYqlQuery(req):
     result = req.get("result")
