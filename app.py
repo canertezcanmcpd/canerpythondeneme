@@ -37,7 +37,13 @@ def webhook():
 
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
-        return yahooWeatherForecast()
+        return {
+        "speech": "Zorsa yaparız imkansızsa zaman alır.",
+        "displayText": "Zorsa yaparız imkansızsa zaman alır.",
+        # "data": data,
+        # "contextOut": [],
+        "source": "apiai-weather-webhook-sample"
+    }
    else	
 		return caner()
 
