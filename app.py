@@ -69,7 +69,7 @@ def yahooWeatherForecast():
     result = urlopen(yql_url).read()
     data = json.loads(result)
     
-    return  return {"speech": data,"displayText": "zorsa yaparız imkansızsa zaman alır deneme","source": "apiai-weather-webhook-sample"}
+     return {"speech": data,"displayText": "zorsa yaparız imkansızsa zaman alır deneme","source": "apiai-weather-webhook-sample"}
 	
 
 def makeYqlQuery(req):
