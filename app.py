@@ -52,7 +52,7 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {"speech": "claim","displayText": "claim","source": "apiai-weather-webhook-sample"}
-	elif eq.get("result").get("action") == "claimsStatus"
+	elif eq.get("result").get("action") == "claimsStatus":
 		return {"speech": "claim","displayText": "claim","source": "apiai-weather-webhook-sample"}
     else:
         baseurl = "https://query.yahooapis.com/v1/public/yql?"
