@@ -62,7 +62,7 @@ def processRequest(req):
     	baseurl = "https://query.yahooapis.com/v1/public/yql?"
     	yql_query = makeYqlQuery(req)
     	if yql_query is None:
-        	return {}
+            return {}
     	yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
     	result = urlopen(yql_url).read()
     	data = json.loads(result)
@@ -72,12 +72,12 @@ def processRequest(req):
 
 def claims():	
     url = 'http://asknnapi.azurewebsites.net/api/contact/claimsStatus'
-    values = { 'identityNumber': 'bar'}
+    values = { 'identityNumber': '123'}
     data = urllib.urlencode(values)
     req = urllib2.Request(url, data)
     response = urllib2.urlopen(req)
     result = response.read()
-    return {"speech": result,"displayText": result,"source": "apiai-weather-webhook-sample"}
+    return {"speech": "asd","displayText": "asd","source": "apiai-weather-webhook-sample"}
 
 def makeYqlQuery(req):
     result = req.get("result")
