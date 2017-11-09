@@ -71,22 +71,13 @@ def processRequest(req):
 
 
 def claims():	
-    method = "POST"
-    handler = urllib2.HTTPHandler()	
-    opener = urllib2.build_opener(handler)	
-    data = urllib.urlencode(dict(identityNumber='23'))
-    request = urllib2.Request("http://asknnapi.azurewebsites.net/api/contact/claimsStatus?identityNumber=24", data=data)	
-    request.add_header("Content-Type",'application/json')	
-    request.get_method = lambda: method	
-    try:
-        connection = opener.open(request)
-    except urllib2.HTTPError,e:
-        connection = e
-    if connection.code == 200:
-        data = connection.read()
-            return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
-	else:    
-	    return {"speech": "olmadı","displayText": "olmadı","source": "apiai-weather-webhook-sample"}
+    url = 'http://asknnapi.azurewebsites.net/api/contact/claimsStatus'
+    values = { 'identityNumber': 'bar'}
+    data = urllib.urlencode(values)
+    req = urllib2.Request(url, data)
+    response = urllib2.urlopen(req)
+    result = response.read()
+    return {"speech": result,"displayText": result,"source": "apiai-weather-webhook-sample"}
 
 def makeYqlQuery(req):
     result = req.get("result")
