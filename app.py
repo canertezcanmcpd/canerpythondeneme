@@ -73,8 +73,8 @@ def claims(req):
     parameters = result.get("parameters")
     identityNumber = parameters.get("identityNumber")
     yql_url = baseurl + urlencode({'identityNumber': identityNumber}) + "&format=json"
-    result = urlopen(yql_url).read()
-    data = json.loads(result)
+    resp = urlopen(yql_url).read()
+    data = json.loads(resp)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
 			
 
