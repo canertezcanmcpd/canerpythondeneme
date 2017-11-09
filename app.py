@@ -54,7 +54,7 @@ def processRequest(req):
     if condition == "test":
         return {"speech": "claim","displayText": "claim","source": "apiai-weather-webhook-sample"}
     elif condition == "claimsStatus":
-        return claims()         
+        return claims(req)         
     else:
     	baseurl = "https://query.yahooapis.com/v1/public/yql?"
     	yql_query = makeYqlQuery(req)
@@ -67,11 +67,12 @@ def processRequest(req):
     	return res
 
 
-def claims():	
-    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/ClaimsStatus?'	     
-    #parameters = result.get("parameters")
-    #identityNumber = parameters.get("identityNumber")
-    yql_url = baseurl + urlencode({'identityNumber': "23"}) + "&format=json"
+def claims(req):	
+    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/ClaimsStatus?'	
+    result = req.get("result")   
+    parameters = result.get("parameters")
+    identityNumber = parameters.get("identityNumber")
+    yql_url = baseurl + urlencode({'identityNumber': identityNumber}) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
