@@ -68,23 +68,22 @@ def processRequest(req):
 
 
 def claims():	
-	method = "POST"
-	handler = urllib2.HTTPHandler()	
-	opener = urllib2.build_opener(handler)	
-	data = urllib.urlencode(dictionary_of_POST_fields_or_None)
-	request = urllib2.Request("http://asknnapi.azurewebsites.net/api/contact/claimsStatus?identityNumber=24", data=data)	
-	request.add_header("Content-Type",'application/json')	
-	request.get_method = lambda: method	
-	try:
-		connection = opener.open(request)
-	except urllib2.HTTPError,e:
-		connection = e
-	
-	if connection.code == 200:
-		data = connection.read()
-		return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
-	else:    
-		return {"speech": "olmadı","displayText": "olmadı","source": "apiai-weather-webhook-sample"}	
+    method = "POST"
+    handler = urllib2.HTTPHandler()	
+    opener = urllib2.build_opener(handler)	
+    data = urllib.urlencode(dictionary_of_POST_fields_or_None)
+    request = urllib2.Request("http://asknnapi.azurewebsites.net/api/contact/claimsStatus?identityNumber=24", data=data)	
+    request.add_header("Content-Type",'application/json')	
+    request.get_method = lambda: method	
+    try:
+        connection = opener.open(request)
+    except urllib2.HTTPError,e:
+        connection = e
+    if connection.code == 200:
+        data = connection.read()
+	    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
+	else:  
+	    return {"speech": "olmadı","displayText": "olmadı","source": "apiai-weather-webhook-sample"}	
 
 def makeYqlQuery(req):
     result = req.get("result")
