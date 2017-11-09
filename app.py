@@ -74,7 +74,7 @@ def claims():
     method = "POST"
     handler = urllib2.HTTPHandler()	
     opener = urllib2.build_opener(handler)	
-    data = urllib.urlencode(dictionary_of_POST_fields_or_None)
+    data = urllib.urlencode(dict(identityNumber='23'))
     request = urllib2.Request("http://asknnapi.azurewebsites.net/api/contact/claimsStatus?identityNumber=24", data=data)	
     request.add_header("Content-Type",'application/json')	
     request.get_method = lambda: method	
