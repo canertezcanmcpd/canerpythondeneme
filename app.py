@@ -68,7 +68,11 @@ def processRequest(req):
 
 
 def claims():
-    return {"speech": "test","displayText": "test","source": "apiai-weather-webhook-sample"}		
+    baseurl = "http://asknnapi.azurewebsites.net/api/contact/claimsStatus?"
+    yql_url = baseurl + urlencode({'identityNumber': 24})
+    result = urlopen(yql_url).read()
+    data = json.loads(result)
+    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}		
 
 def makeYqlQuery(req):
     result = req.get("result")
