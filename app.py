@@ -71,13 +71,10 @@ def processRequest(req):
 
 
 def claims():	
-    url = 'http://asknnapi.azurewebsites.net/api/contact/claimsStatus'
-    values = { 'identityNumber': '123'}
-    data = urllib.urlencode(values)
-    req = urllib2.Request(url, data)
-    response = urllib2.urlopen(req)
-    result = response.read()
-    return {"speech": "asd","displayText": "asd","source": "apiai-weather-webhook-sample"}
+	url = 'http://asknnapi.azurewebsites.net/api/contact/claimsStatus'
+	payload = {'identityNumber': '123'}
+	r = request.post(url, data=payload)
+    return {"speech": r.text,"displayText": r.text,"source": "apiai-weather-webhook-sample"}
 
 def makeYqlQuery(req):
     result = req.get("result")
