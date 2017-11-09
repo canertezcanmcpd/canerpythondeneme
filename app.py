@@ -74,7 +74,7 @@ def claims():
     yql_url = baseurl + urlencode({'identityNumber': "23"}) + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
-    return {"speech": urlencode(data),"displayText": data,"source": "apiai-weather-webhook-sample"}
+    return data
 			
 
 def makeYqlQuery(req):
