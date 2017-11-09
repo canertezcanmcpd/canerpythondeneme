@@ -68,8 +68,7 @@ def processRequest(req):
 
 
 def claims():	
-    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/ClaimsStatus?'	 
-    result = req.get("result")
+    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/ClaimsStatus?'	     
     #parameters = result.get("parameters")
     #identityNumber = parameters.get("identityNumber")
     yql_url = baseurl + urlencode({'identityNumber': "23"}) + "&format=json"
