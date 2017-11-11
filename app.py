@@ -116,13 +116,13 @@ def makeWebhookResult(data):
     speech = "Today " + location.get('city') + ": " + condition.get('text') +" "+ condition.get('temp')+ units.get('temperature') 
 	
     if "Clear" in condition.get('text'):
-        speech += " You can take the sunglasses"
+        speech += " You can take the sunglasses <span class='glyphicon glyphicon-sunglasses'></span>"
     elif "Rain" in condition.get('text'):
         speech +=" You must take the umbrella"
-    elif "Cloudy" in condition.get('text'):
+	elif "Cloudy" in condition.get('text'):
         speech += " You can take the umbrella"
     elif "Sunny" in condition.get('text'):
-        speech += " You must take the sunglasses"
+        speech += " You must take the sunglasses <span class='glyphicon glyphicon-sunglasses'></span>"
 
 	
 
