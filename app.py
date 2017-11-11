@@ -55,9 +55,9 @@ def processRequest(req):
         return {"speech": "claim","displayText": "claim","source": "apiai-weather-webhook-sample"}
     elif condition == "claimsStatus":
         return claims(req)
-    elif condition == "sales":
+    elif condition == "game2":
         return {"speech": "sales","displayText": "claim","source": "apiai-weather-webhook-sample"}
-    elif condition == "npsFunction":
+    elif condition == "game3":
         return {"speech": "npsFunction","displayText": "claim","source": "apiai-weather-webhook-sample"}
     elif condition == "game":
         return game(req)
