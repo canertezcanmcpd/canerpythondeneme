@@ -119,11 +119,11 @@ def makeWebhookResult(data):
              ", And the temperature is " + condition.get('temp') + " " + units.get('temperature')
     
     if weath == "Clear":
-        speech = speechtext + "You can take the sunglasses"
+        speech = speechtext + " You can take the sunglasses"
     elif weath == "Cloudly":
-        speech = speechtext + "You can take the umbrella"
+        speech = speechtext + " You can take the umbrella"
     elif weath == "Sunny":
-        speech = speechtext + "You must take the sunglasses"
+        speech = speechtext + " You must take the sunglasses"
 
     print("Response:")
     print(speech)
