@@ -118,11 +118,11 @@ def makeWebhookResult(data):
     speechtext = "Today the weather in " + location.get('city') + ": " + weath + \
              ", And the temperature is " + condition.get('temp') + " " + units.get('temperature')
     
-    if weath == "Clear"
+    if weath == "Clear":
         speech = speechtext + "You can take the sunglasses"
-    elif weath == "Cloudly"
+    elif weath == "Cloudly":
         speech = speechtext + "You can take the umbrella"
-    elif weath == "Sunny"
+    elif weath == "Sunny":
         speech = speechtext + "You must take the sunglasses"
 
     print("Response:")
