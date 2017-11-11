@@ -59,6 +59,8 @@ def processRequest(req):
         return game(req)		
     elif condition == "sales":
         return sales(req)
+    elif condition == "nps":
+        return sales(req)
     else:
     	baseurl = "https://query.yahooapis.com/v1/public/yql?"
     	yql_query = makeYqlQuery(req)
@@ -79,8 +81,30 @@ def claims(req):
     yql_url = baseurl + urlencode({'identityNumber': identityNumber}) + "&format=json"
     resp = urlopen(yql_url).read()
     data = json.loads(resp)
-    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}			
+    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
+	
+def sales(req):	
+    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Sales?'	
+    result = req.get("result")   
+    parameters = result.get("parameters")
+    nameSurname = parameters.get("nameSurname")
+    phone = parameters.get("phone")
+    product = parameters.get("product")	
+    yql_url = baseurl + urlencode({'nameSurname': nameSurname,'phone':phone,'product':product}) + "&format=json"
+    resp = urlopen(yql_url).read()
+    data = json.loads(resp)
+    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}		
 
+def nps(req):	
+    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Nps?'	
+    result = req.get("result")   
+    parameters = result.get("parameters")
+    answer = parameters.get("answer")    
+    yql_url = baseurl + urlencode({'answer': answer}) + "&format=json"
+    resp = urlopen(yql_url).read()
+    data = json.loads(resp)
+    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
+	
 def game(req):	
     baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Game?'	
     result = req.get("result")   
@@ -90,18 +114,6 @@ def game(req):
     ans2 = parameters.get("ans2")
     ans3 = parameters.get("ans3")
     yql_url = baseurl + urlencode({'nickName': nickName,'ans1':ans1,'ans2':ans2,'ans3':ans3}) + "&format=json"
-    resp = urlopen(yql_url).read()
-    data = json.loads(resp)
-    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
-
-def sales(req):	
-    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Sales?'	
-    result = req.get("result")   
-    parameters = result.get("parameters")
-    namesurname = parameters.get("namesurname")
-    phone = parameters.get("phone")
-    product = parameters.get("product")	
-    yql_url = baseurl + urlencode({'namesurname': namesurname,'phone':phone,'product':product}) + "&format=json"
     resp = urlopen(yql_url).read()
     data = json.loads(resp)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
