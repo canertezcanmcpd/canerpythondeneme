@@ -80,7 +80,7 @@ def claims(req):
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
 
 def game(req):	
-    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/game?'	
+    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Game?'	
     result = req.get("result")   
     parameters = result.get("parameters")
     nickName = parameters.get("nickName")
