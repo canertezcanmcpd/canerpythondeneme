@@ -56,9 +56,7 @@ def processRequest(req):
     elif condition == "claimsStatus":
         return claims(req)
     elif condition == "game":
-        return game(req)		
-    elif condition == "nps":
-	return nps(req)
+        return game(req)		  
     elif condition == "sales":
         return sales(req)
     else:
@@ -79,16 +77,6 @@ def claims(req):
     parameters = result.get("parameters")
     identityNumber = parameters.get("identityNumber")
     yql_url = baseurl + urlencode({'identityNumber': identityNumber}) + "&format=json"
-    resp = urlopen(yql_url).read()
-    data = json.loads(resp)
-    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
-
-def nps(req):	
-    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Nps?'	
-    result = req.get("result")   
-    parameters = result.get("parameters")
-    answer = parameters.get("answer")
-    yql_url = baseurl + urlencode({'answer': answer}) + "&format=json"
     resp = urlopen(yql_url).read()
     data = json.loads(resp)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}	
