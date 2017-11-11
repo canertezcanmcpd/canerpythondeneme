@@ -117,7 +117,7 @@ def makeWebhookResult(data):
 	
     if condition.get('text') == "Clear":
         speech += " You can take the sunglasses"
-    elif condition.get('text') == "Cloudly":
+    elif condition.get('text') == "Cloudy":
         speech += " You can take the umbrella"
     elif condition.get('text') == "Sunny":
         speech += " You must take the sunglasses"
