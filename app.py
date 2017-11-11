@@ -105,7 +105,7 @@ def nps(req):
     data = json.loads(resp)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
 	
-def game(req):	
+def game(req):
     baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Game?'	
     result = req.get("result")   
     parameters = result.get("parameters")
