@@ -59,8 +59,8 @@ def processRequest(req):
         return game(req)		
     elif condition == "sales":
         return sales(req)
-    elif condition == "nps":
-        return nps(req)
+    elif condition == "npsFunction":
+        return npsFunction(req)
     else:
     	baseurl = "https://query.yahooapis.com/v1/public/yql?"
     	yql_query = makeYqlQuery(req)
@@ -95,7 +95,7 @@ def sales(req):
     data = json.loads(resp)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}		
 
-def nps(req):
+def npsFunction(req):
     baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Nps?'	
     result = req.get("result")   
     parameters = result.get("parameters")
