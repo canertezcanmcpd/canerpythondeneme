@@ -87,7 +87,7 @@ def game(req):
     ans1 = parameters.get("ans1")
     ans2 = parameters.get("ans2")
     ans3 = parameters.get("ans3")
-    yql_url = baseurl + urlencode({'identityNumber': identityNumber,'ans1':ans1,'ans2':ans2,'ans3':ans3}) + "&format=json"
+    yql_url = baseurl + urlencode({'nickName': nickName,'ans1':ans1,'ans2':ans2,'ans3':ans3}) + "&format=json"
     resp = urlopen(yql_url).read()
     data = json.loads(resp)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
