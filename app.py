@@ -58,9 +58,9 @@ def processRequest(req):
     elif condition == "game":
         return game(req)		
     elif condition == "sales":
-        return sales(req)
+        return {"speech": "sales","displayText": "claim","source": "apiai-weather-webhook-sample"}
     elif condition == "npsFunction":
-        return npsFunction(req)
+        return {"speech": "npsFunction","displayText": "claim","source": "apiai-weather-webhook-sample"}
     else:
     	baseurl = "https://query.yahooapis.com/v1/public/yql?"
     	yql_query = makeYqlQuery(req)
