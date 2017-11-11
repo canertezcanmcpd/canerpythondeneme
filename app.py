@@ -60,7 +60,7 @@ def processRequest(req):
     elif condition == "sales":
         return sales(req)
     elif condition == "nps":
-        return sales(req)
+        return nps(req)
     else:
     	baseurl = "https://query.yahooapis.com/v1/public/yql?"
     	yql_query = makeYqlQuery(req)
