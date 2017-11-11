@@ -73,7 +73,7 @@ def processRequest(req):
     	return res
 
 
-def claims(req):	
+def claims(req):
     baseurl = 'http://asknnapi.azurewebsites.net/api/contact/ClaimsStatus?'	
     result = req.get("result")   
     parameters = result.get("parameters")
@@ -83,7 +83,7 @@ def claims(req):
     data = json.loads(resp)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
 	
-def sales(req):	
+def sales(req):
     baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Sales?'	
     result = req.get("result")   
     parameters = result.get("parameters")
@@ -95,7 +95,7 @@ def sales(req):
     data = json.loads(resp)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}		
 
-def nps(req):	
+def nps(req):
     baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Nps?'	
     result = req.get("result")   
     parameters = result.get("parameters")
