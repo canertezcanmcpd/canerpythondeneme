@@ -119,7 +119,7 @@ def makeWebhookResult(data):
         speech += " You can take the sunglasses <span class='glyphicon glyphicon-sunglasses'></span>"
     elif "Rain" in condition.get('text'):
         speech +=" You must take the umbrella"
-	elif "Cloudy" in condition.get('text'):
+    elif "Cloudy" in condition.get('text'):
         speech += " You can take the umbrella"
     elif "Sunny" in condition.get('text'):
         speech += " You must take the sunglasses <span class='glyphicon glyphicon-sunglasses'></span>"
