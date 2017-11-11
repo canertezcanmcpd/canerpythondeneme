@@ -58,7 +58,7 @@ def processRequest(req):
     elif condition == "game":
         return game(req)		
     elif condition == "npsFunction":
-	return nps(req)
+	return npsFunction(req)
     elif condition == "sales":
 	return sales(req)
     else:
