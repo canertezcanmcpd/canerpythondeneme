@@ -55,10 +55,10 @@ def processRequest(req):
         return {"speech": "claim","displayText": "claim","source": "apiai-weather-webhook-sample"}
     elif condition == "claimsStatus":
         return claims(req)
-    elif condition == "game2":
-        return {"speech": "sales","displayText": "claim","source": "apiai-weather-webhook-sample"}
-    elif condition == "game3":
-        return {"speech": "npsFunction","displayText": "claim","source": "apiai-weather-webhook-sample"}
+    elif condition == "sales":
+        return sales(req)
+    elif condition == "nps":
+        return nps(req)
     elif condition == "game":
         return game(req)
     else:
@@ -95,7 +95,7 @@ def sales(req):
     data = json.loads(resp)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}		
 
-def npsFunction(req):
+def nps(req):
     baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Nps?'	
     result = req.get("result")   
     parameters = result.get("parameters")
