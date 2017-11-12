@@ -61,6 +61,16 @@ def processRequest(req):
         return nps(req)
     elif condition == "game":
         return game(req)
+    elif condition == "fundrecommendation":
+        return fundrecommendation(req)		
+    elif condition == "getinvestmentDetail":
+        return getinvestmentDetail(req)		
+    elif condition == "getfunddetail":
+        return getfunddetail(req)	
+    elif condition == "getnamesurname":
+        return getnamesurname(req)			
+    elif condition == "isusersbirthday":
+        return isusersbirthday(req)			
     else:
     	baseurl = "https://query.yahooapis.com/v1/public/yql?"
     	yql_query = makeYqlQuery(req)
@@ -72,6 +82,46 @@ def processRequest(req):
     	res = makeWebhookResult(data)
     	return res
 
+def isusersbirthday(req):
+    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/IsUsersBirthday?'	
+    result = req.get("result")   
+    parameters = result.get("parameters")
+    polid = parameters.get("polid")
+    yql_url = baseurl + urlencode({'polid': polid}) + "&format=json"
+    resp = urlopen(yql_url).read()
+    data = json.loads(resp)
+    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}		
+		
+def getnamesurname(req):
+    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/GetNameSurname?'	
+    result = req.get("result")   
+    parameters = result.get("parameters")
+    polid = parameters.get("polid")
+    yql_url = baseurl + urlencode({'polid': polid}) + "&format=json"
+    resp = urlopen(yql_url).read()
+    data = json.loads(resp)
+    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}			
+		
+def getfunddetail(req):
+    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/GetFundDetail?'	
+    result = req.get("result")   
+    parameters = result.get("parameters")
+    polid = parameters.get("polid")
+    yql_url = baseurl + urlencode({'polid': polid}) + "&format=json"
+    resp = urlopen(yql_url).read()
+    data = json.loads(resp)
+    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}	
+
+		
+def getinvestmentDetail(req):
+    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/GetInvestmentDetail?'	
+    result = req.get("result")   
+    parameters = result.get("parameters")
+    polid = parameters.get("polid")
+    yql_url = baseurl + urlencode({'polid': polid}) + "&format=json"
+    resp = urlopen(yql_url).read()
+    data = json.loads(resp)
+    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}		
 
 def claims(req):
     baseurl = 'http://asknnapi.azurewebsites.net/api/contact/ClaimsStatus?'	
@@ -82,6 +132,17 @@ def claims(req):
     resp = urlopen(yql_url).read()
     data = json.loads(resp)
     return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}
+	
+def fundrecommendation(req):
+    baseurl = 'http://asknnapi.azurewebsites.net/api/contact/FundRecommendation?'	
+    result = req.get("result")   
+    parameters = result.get("parameters")
+    identityNumber = parameters.get("identityNumber")
+    polid = parameters.get("polid")
+    yql_url = baseurl + urlencode({'identityNumber': identityNumber,'polid':polid}) + "&format=json"
+    resp = urlopen(yql_url).read()
+    data = json.loads(resp)
+    return {"speech": data,"displayText": data,"source": "apiai-weather-webhook-sample"}	
 	
 def sales(req):
     baseurl = 'http://asknnapi.azurewebsites.net/api/contact/Sales?'	
